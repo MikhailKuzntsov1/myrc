@@ -12,18 +12,16 @@ end
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
     debug = false,
     sources = {
-        formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+        -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
         -- formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua, -- lua
         diagnostics.flake8, -- python
-        code_actions.shellcheck,
         diagnostics.shellcheck,
         diagnostics.cppcheck,
 
