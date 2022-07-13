@@ -88,9 +88,10 @@ return packer.startup(function(use)
 	-- @Lualine
 	use("nvim-lualine/lualine.nvim")
 
-	-- @Tags
-	use("ludovicchabant/vim-gutentags")
-	use("preservim/tagbar")
+	-- @Tagbar
+	use("simrat39/symbols-outline.nvim")
+	-- use("ludovicchabant/vim-gutentags")
+	-- use("preservim/tagbar")
 
 	-- @GuiVim
 	use({
@@ -112,7 +113,7 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("JoosepAlviste/nvim-ts-context-commentstring") -- smart comments (aware of nested languages)
-	use({ "akinsho/toggleterm.nvim", commit = "aaeed9e02167c5e8f00f25156895a6fd95403af8" })
+	use({ "akinsho/toggleterm.nvim" })
 
 	-- @Colorschemes
 	use("navarasu/onedark.nvim")
@@ -144,9 +145,9 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- LSP installer. Installed servers ARE NOT used automatically. They must be included in lsp/configs.lua file
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("antoinemadec/FixCursorHold.nvim")
-	use({ "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" })
+	use({ "RRethy/vim-illuminate" })
 	use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
-	use("tamago324/nlsp-settings.nvim") --
+	use("tamago324/nlsp-settings.nvim")
 
 	-- @Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -171,6 +172,7 @@ return packer.startup(function(use)
 
 	-- @Wiki, @NoteTaking
 	use("vimwiki/vimwiki")
+	-- use({ "xolox/vim-notes", requires = "xolox/vim-misc" })
 
 	-- @Navigation
 	use("akinsho/bufferline.nvim")
@@ -186,19 +188,7 @@ return packer.startup(function(use)
 
 	-- @Web
 	use({
-
-		ft = {
-			"html",
-			"js",
-			"ts",
-			"tsx",
-			"jsx",
-			"css",
-			"javascriptreact",
-			"typescriptreact",
-			"javascript",
-			"typescript",
-		},
+		"norcalli/nvim-colorizer.lua",
 	})
 
 	-- @Docker

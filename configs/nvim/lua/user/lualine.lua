@@ -104,5 +104,5 @@ lualine.setup({
 		lualine_z = {},
 	},
 	tabline = {},
-	extensions = { "man", "nvim-tree", "symbols-outline", "toggleterm" },
+	extensions = {}, -- doesn't provide anything useful, just changes lualine slightly for specified extensions-buffers. Don't recomment turning on any.
 })

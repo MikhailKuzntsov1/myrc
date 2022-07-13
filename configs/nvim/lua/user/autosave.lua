@@ -5,10 +5,10 @@ end
 
 autosave.setup({
 	enabled = true,
-	-- execution_message = function()
-	--     return "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S")
-	-- end,
-	execution_message = "",
+	execution_message = function()
+		return "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S")
+	end,
+	-- execution_message = "",
 	events = { "InsertLeave" }, -- this is optimal for performance
 	conditions = {
 		exists = true,
@@ -23,5 +23,5 @@ autosave.setup({
 	clean_command_line_interval = 0,
 	-- experiment with this setting
 	-- debounce delay is provided in (ms)
-	debounce_delay = 1500,
+	debounce_delay = 1000,
 })

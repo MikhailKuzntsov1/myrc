@@ -24,8 +24,25 @@ vim.cmd([[
 
     augroup _wiki
       autocmd!
-      autocmd FileType vimwiki set filetype=md
+      autocmd FileType vimwiki set filetype=markdown
     augroup end
+
+    augroup _qss
+      autocmd!
+      autocmd FileType qss set filetype=css
+    augroup end
+
+    autocmd BufNewFile,BufRead */.git/COMMIT_EDITMSG setlocal filetype=notes
+
+  " This autocmd is for CMake util. It changes CWD to be near currently editing tab.
+    function! OnTabEnter(path)
+      if isdirectory(a:path)
+        let dirname = a:path
+      else
+        let dirname = fnamemodify(a:path, ":h")
+      endif
+      execute "tcd ". dirname
+    endfunction()
 
     autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
 ]])
@@ -63,16 +80,16 @@ vim.g.push_events = {
 }
 
 local syncBuffers = {
-	"*.vimwiki",
-	"*.md",
-	"*.txt",
-	"*.html",
-	"*.lua",
 	"lua",
 	"md",
 	"markdown",
 	"vimwiki",
 	"txt",
+	"*.vimwiki",
+	"*.md",
+	"*.txt",
+	"*.html",
+	"*.lua",
 }
 
 vim.g.vim_git_sync_dirs = {

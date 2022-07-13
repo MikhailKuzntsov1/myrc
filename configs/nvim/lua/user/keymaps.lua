@@ -3,6 +3,8 @@ local term_opts = { silent = true, nowait = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+-- keymap("c", "w!!", "%!sudo tee > /dev/null %", opts)
+
 --Remap space as leader key
 keymap("n", "<Space>", "<Nop>", { nowait = true })
 vim.g.mapleader = " "
@@ -146,7 +148,7 @@ keymap("n", "<leader>r", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>o", ":NvimTreeToggle<cr>", opts)
 
 -- @Tagbar --
-keymap("n", "<leader>1", ":TagbarToggle<cr>", opts)
+keymap("n", "<leader>1", ":SymbolsOutline<cr>", opts)
 
 -- @CMake --
 keymap("n", "<F1>", ":make<cr>", opts)
@@ -154,7 +156,7 @@ keymap("n", "<F2>", "<Plug>(CMakeGenerate)", opts)
 keymap("n", "<F3>", "<Plug>(CMakeBuild)", opts)
 keymap("n", "<F4>", ":lua Launch_executable()<cr>", opts)
 Launch_executable = function()
-	CMAKECMD = "open -a 'Iterm.app' ~/s21_smart_calc/build/Debug/Bin/SmartCalc.app/Contents/MacOS/s21_smart_calc"
+	CMAKECMD = "open -a 'Iterm.app' ~/s21_smart_calc/build/Debug/Bin/SmartCalc.app/Contents/MacOS/SmartCalc"
 	local result = vim.fn.system(CMAKECMD)
 	vim.notify(result)
 end
