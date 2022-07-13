@@ -353,10 +353,10 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType makefile ++once lua require("packer.load")({'vim-cmake'}, { ft = "makefile" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cpp ++once lua require("packer.load")({'vim-cmake'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'vim-cmake'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cmake ++once lua require("packer.load")({'vim-cmake'}, { ft = "cmake" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'vim-cmake'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType makefile ++once lua require("packer.load")({'vim-cmake'}, { ft = "makefile" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
