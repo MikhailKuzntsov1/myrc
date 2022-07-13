@@ -23,9 +23,10 @@ require("user.cmake")
 require("user.toggleterm")
 require("user.folding")
 require("user.webdev")
-require("user.illuminate")
 require("user.symbols-outline")
 require("user.vimwiki")
+require("user.toggletasks")
+
 -- No longer used
 -- require("user.ctags")
 -- require "user.dap"

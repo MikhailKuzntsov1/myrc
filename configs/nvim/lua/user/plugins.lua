@@ -107,8 +107,6 @@ return packer.startup(function(use)
 	-- @VanillaLike_Helpers
 	use("tpope/vim-obsession")
 	use("tpope/vim-unimpaired")
-	use("tpope/vim-repeat")
-	use("tpope/vim-surround")
 	use("kshenoy/vim-signature")
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
@@ -119,6 +117,8 @@ return packer.startup(function(use)
 	use("navarasu/onedark.nvim")
 	use("folke/tokyonight.nvim")
 	use("NTBBloodbath/doom-one.nvim")
+	use("rebelot/kanagawa.nvim")
+	use("morhetz/gruvbox")
 
 	-- @Folding
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
@@ -142,10 +142,9 @@ return packer.startup(function(use)
 
 	-- @LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- LSP installer. Installed servers ARE NOT used automatically. They must be included in lsp/configs.lua file
+	-- use("williamboman/nvim-lsp-installer") -- LSP installer. Installed servers ARE NOT used automatically. They must be included in lsp/configs.lua file
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("antoinemadec/FixCursorHold.nvim")
-	use({ "RRethy/vim-illuminate" })
 	use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
 	use("tamago324/nlsp-settings.nvim")
 
@@ -168,7 +167,9 @@ return packer.startup(function(use)
 
 	-- @Git
 	use("lewis6991/gitsigns.nvim")
-	use("tpope/vim-fugitive")
+	use("TimUntersberger/neogit")
+
+	-- use("tpope/vim-fugitive")
 
 	-- @Wiki, @NoteTaking
 	use("vimwiki/vimwiki")
@@ -183,6 +184,8 @@ return packer.startup(function(use)
 	use({ "rcarriga/nvim-dap-ui", commit = "d76d6594374fb54abf2d94d6a320f3fd6e9bb2f7" })
 	use({ "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" })
 
+	-- @Tasks
+	use("jedrzejboczar/toggletasks.nvim")
 	-- @C_CXX_Development
 	use({ "cdelledonne/vim-cmake", ft = { "c", "cpp", "cmake", "makefile" } })
 
