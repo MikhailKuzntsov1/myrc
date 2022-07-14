@@ -1,6 +1,6 @@
 require("telescope").load_extension("toggletasks")
 
-local homeTasks = os.getenv("HOME") .. "/.config/nvim/toggletasks/"
+local homeTasks = os.getenv("HOME") .. "/.config/nvim/tasks"
 
 require("toggletasks").auto_spawn({ "VimEnter", "SessionLoadPost" }, function(tasks)
 	return tasks:with_tag("auto"):not_tag("test"):from_file(homeTasks):filter(function(task)
@@ -20,7 +20,6 @@ require("toggletasks").setup({
 		".nvim/toggletasks",
 		".nvim/",
 		"../.nvim/",
-		homeTasks,
 	},
 	-- Directories to consider when searching for available tasks for current window
 	scan = {
@@ -28,7 +27,9 @@ require("toggletasks").setup({
 		tab_cwd = true, -- vim.fn.getcwd(-1, tab)
 		win_cwd = true, -- vim.fn.getcwd(win)
 		lsp_root = true, -- root_dir for first LSP available for the buffer
-		dirs = {}, -- explicit list of directories to search
+		dirs = {
+			homeTasks,
+		}, -- explicit list of directories to search
 	},
 	-- Language server priorities when selecting lsp_root (default is 0)
 	lsp_priorities = {
@@ -47,25 +48,25 @@ require("toggletasks").setup({
 			-- Replaces default select_* actions to spawn task (and change toggleterm
 			-- direction for select horiz/vert/tab)
 			mappings = {
-				select_float = "<C-f>",
-				spawn_smart = "<C-a>", -- all if no entries selected, else use multi-select
-				spawn_all = "<M-a>", -- all visible entries
-				spawn_selected = "<C-s>", -- entries selected via multi-select (default <tab>)
+				select_float = "<nop>",
+				spawn_smart = "<nop>", -- all if no entries selected, else use multi-select
+				spawn_all = "<nop>", -- all visible entries
+				spawn_selected = "<nop>", -- entries selected via multi-select (default <tab>)
 			},
 		},
 		-- Replaces default select_* actions to open task terminal (and change toggleterm
 		-- direction for select horiz/vert/tab)
 		select = {
 			mappings = {
-				select_float = "<C-f>",
-				open_smart = "<C-a>",
-				open_all = "<M-a>",
+				select_float = "<nop>",
+				open_smart = "<nop>",
+				open_all = "<nop>",
 				open_selected = nil,
-				kill_smart = "<C-q>",
-				kill_all = "<M-q>",
+				kill_smart = "<nop>",
+				kill_all = "<nop>",
 				kill_selected = nil,
-				respawn_smart = "<C-s>",
-				respawn_all = "<M-s>",
+				respawn_smart = "<nop>",
+				respawn_all = "<nop>",
 				respawn_selected = nil,
 			},
 		},

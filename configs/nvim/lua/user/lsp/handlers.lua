@@ -74,24 +74,21 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 M.on_attach = function(client, bufnr)
 	if client.supports_method("textDocument/formatting") then
-		if client.name == "tsserver" or client.name == "eslint" then
-			client.resolved_capabilities.document_formatting = false
-		else
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-					if #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) == 0 then
-						vim.lsp.buf.formatting_seq_sync(nil, 1000, nil)
-					end
-				end,
-			})
-		end
+		client.resolved_capabilities.document_formatting = false
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+				if #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) == 0 then
+					vim.lsp.buf.formatting_seq_sync(nil, 1000, nil)
+				end
+			end,
+		})
 	end
 	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
+	-- lsp_highlight_document(client)
 end
 
 return M

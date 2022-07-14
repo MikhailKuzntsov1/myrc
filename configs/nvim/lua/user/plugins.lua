@@ -106,6 +106,7 @@ return packer.startup(function(use)
 
 	-- @VanillaLike_Helpers
 	use("tpope/vim-obsession")
+	use("jedrzejboczar/possession.nvim")
 	use("tpope/vim-unimpaired")
 	use("kshenoy/vim-signature")
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
@@ -142,7 +143,7 @@ return packer.startup(function(use)
 
 	-- @LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
-	-- use("williamboman/nvim-lsp-installer") -- LSP installer. Installed servers ARE NOT used automatically. They must be included in lsp/configs.lua file
+	use("williamboman/nvim-lsp-installer") -- LSP installer. Installed servers ARE NOT used automatically. They must be included in lsp/configs.lua file
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("antoinemadec/FixCursorHold.nvim")
 	use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
@@ -167,9 +168,8 @@ return packer.startup(function(use)
 
 	-- @Git
 	use("lewis6991/gitsigns.nvim")
-	use("TimUntersberger/neogit")
-
-	-- use("tpope/vim-fugitive")
+	use("tpope/vim-fugitive")
+	-- use("TimUntersberger/neogit")
 
 	-- @Wiki, @NoteTaking
 	use("vimwiki/vimwiki")
@@ -177,7 +177,7 @@ return packer.startup(function(use)
 
 	-- @Navigation
 	use("akinsho/bufferline.nvim")
-	-- use 'christoomey/vim-tmux-navigator'
+	use("christoomey/vim-tmux-navigator")
 
 	-- @Debugging
 	use({ "mfussenegger/nvim-dap", commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d" })

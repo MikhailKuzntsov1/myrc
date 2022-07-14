@@ -7,5 +7,5 @@ vim.g.vimwiki_list = {
 	},
 }
 
--- TODO: add autocommands for configuring MD edit on these wiki files
--- in particular: remove spelling, remove column, wrap lines, set filetype
+-- call vimwiki#u#map_key('n', '<TAB>', '<Plug>VimwikiNextLink')
+-- call vimwiki#u#map_key('n', '<S-TAB>', '<Plug>VimwikiPrevLink')

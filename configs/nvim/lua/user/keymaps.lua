@@ -151,14 +151,43 @@ keymap("n", "<leader>o", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>1", ":SymbolsOutline<cr>", opts)
 
 -- @CMake --
-keymap("n", "<F1>", ":make<cr>", opts)
-keymap("n", "<F2>", "<Plug>(CMakeGenerate)", opts)
-keymap("n", "<F3>", "<Plug>(CMakeBuild)", opts)
+keymap("n", "<F1>", ":lua Build_Current_File()<cr>", opts)
+keymap("n", "<F2>", ":lua CMakeGenerate()<cr>", opts)
+keymap("n", "<F3>", ":lua CMakeBuild()<cr>", opts)
 keymap("n", "<F4>", ":lua Launch_executable()<cr>", opts)
+
 Launch_executable = function()
 	CMAKECMD = "open -a 'Iterm.app' ~/s21_smart_calc/build/Debug/Bin/SmartCalc.app/Contents/MacOS/SmartCalc"
 	local result = vim.fn.system(CMAKECMD)
 	vim.notify(result)
+end
+
+CMakeGenerate = function()
+	if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" or vim.bo.filetype == "cmake" then
+		vim.cmd("<Plug>(CMakeGenerate)")
+	else
+		vim.cmd("webpack")
+	end
+end
+
+CMakeBuild = function()
+	if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" or vim.bo.filetype == "cmake" then
+		vim.cmd("<Plug>(CMakeBuild)")
+	elseif vim.bo.filetype == "javascript" or vim.bo.filetype == "typescrtipt" then
+		vim.cmd("webpack")
+	else
+		vim.cmd([[ lua require('telescope').extensions.toggletasks.spawn() ]])
+	end
+end
+
+Build_Current_File = function()
+	if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" then
+		vim.cmd("make")
+	elseif vim.bo.filetype == "javascript" or vim.bo.filetype == "typescrtipt" then
+		vim.fn.system("webpack build")
+	else
+		vim.cmd([[ lua require('telescope').extensions.toggletasks.spawn() ]])
+	end
 end
 
 -- @LSP_Diagnostics

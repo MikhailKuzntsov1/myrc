@@ -26,6 +26,7 @@ require("user.webdev")
 require("user.symbols-outline")
 require("user.vimwiki")
 require("user.toggletasks")
+require("user.possession")
 
 -- No longer used
 -- require("user.ctags")

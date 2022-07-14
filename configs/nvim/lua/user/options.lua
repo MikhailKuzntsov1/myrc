@@ -48,7 +48,7 @@ local options = {
 	nrformats = "", -- disables vim support for binary/hex numbers (allows incrementing numbers with trailing spaces 0001, etc.)
 	-- @Warning! This setting 'merges' all columns into one (i.e. folds, warnings, numbers, etc.)
 	-- alternative: 'yes' (always show, to prevent screen jumping)
-	signcolumn = "number",
+	signcolumn = "yes",
 }
 
 vim.opt.guifont = "FiraCode Nerd Font Mono:h16"
@@ -56,6 +56,7 @@ vim.opt.guifont = "FiraCode Nerd Font Mono:h16"
 local g = vim.g
 
 vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
+vim.cmd([[set sessionoptions-=buffers]])
 
 -- See @docs for reference on @Neovide configuration:
 -- https://github.com/neovide/neovide/wiki/Configuration#multigrid
