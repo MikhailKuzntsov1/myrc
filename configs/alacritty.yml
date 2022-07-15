@@ -77,8 +77,8 @@ cursor:
   style:
     shape: Beam
   vi_mode_style:
-    shape: Block
-  unfocused_hollow: false
+    shape: Beam
+  unfocused_hollow: true
 
 live_config_reload: true
 

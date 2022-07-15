@@ -6,7 +6,10 @@
 
 ## ENV Configuration
 export TERM=xterm-256color
-export ZSH_THEME="af-magic"
+# export ZSH_THEME="af-magic"
+export ZSH_THEME=""
+eval "$(starship init zsh)"
+# export ZSH_THEME="spaceship"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -78,6 +81,7 @@ alias ll="exa -l -g --icons"
 alias la="ll -a"
 alias ls="exa --icons -F --sort=size"
 alias tree="ls -T"
+alias t="tree -a -L 1"
 alias l="la"
 
 # CLI file manager alias
