@@ -23,6 +23,13 @@ $ cd myrc
 $ ./install.sh
 ```
 
+## Todo:
+
+- [ ] Disable <S-Caps> and <C-Caps> in `.Xmodmap`
+- [ ] Add better font size configuration
+- [ ] Add more wallpaper (in particular - pixelart)
+
+
 ## Credits
 
 - Some things in `.vimrc` & `.tmux.conf` were stolen from my fellow S21 students

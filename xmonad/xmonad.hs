@@ -99,7 +99,7 @@ myTerminal :: String
 myTerminal = "alacritty"    -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "qutebrowser "  -- Sets qutebrowser as browser
+myBrowser = "qutebrowser"  -- Sets qutebrowser as browser
 
 myVim :: String
 -- myVim = "macsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
