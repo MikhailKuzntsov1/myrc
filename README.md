@@ -25,7 +25,7 @@ $ ./install.sh
 
 ## Todo:
 
-- [ ] Disable <S-Caps> and <C-Caps> in `.Xmodmap`
+- [X] Disable <S-Caps> and <C-Caps> in `.Xmodmap` (`solved with setxkbmap``)
 - [ ] Add better font size configuration
 - [ ] Add more wallpaper (in particular - pixelart)
 
