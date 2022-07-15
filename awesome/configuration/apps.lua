@@ -15,9 +15,9 @@ return {
 		--- Default code editor
 		code_editor = "neovide",
 		--- Default web browser
-		web_browser = "firefox",
+		web_browser = "qutebrowser",
 		--- Default file manager
-		file_manager = "nautilus",
+		file_manager = "ranger",
 		--- Default network manager
 		network_manager = "wezterm start nmtui",
 		--- Default bluetooth manager

@@ -12,8 +12,8 @@ local apps = require("configuration.apps")
 
 --- Make key easier to call
 --- ~~~~~~~~~~~~~~~~~~~~~~~
-_G.mod = "Mod1"
-_G.alt = "Mod1"
+_G.mod = "Mod1" -- left alt key
+_G.alt = "Mod4" -- super key
 _G.ctrl = "Control"
 _G.shift = "Shift"
 
@@ -42,18 +42,23 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn.with_shell(apps.default.app_launcher)
 	end, { description = "open app launcher", group = "app" }),
 
+
+	awful.key({ mod }, "y", function()
+		awful.spawn.with_shell(apps.default.app_launcher)
+	end, { description = "open app launcher (second way)", group = "app" }),
+
 	--- Code editor
-	awful.key({ mod, shift }, "e", function()
+	awful.key({ mod }, "e", function()
 		awful.spawn(apps.default.code_editor)
 	end, { description = "open code editor", group = "app" }),
 
 	--- File manager
-	awful.key({ mod, shift }, "f", function()
+    awful.key({ mod }, "f", function()
 		awful.spawn(apps.default.file_manager)
 	end, { description = "open file manager", group = "app" }),
 
 	--- Web browser
-	awful.key({ mod, shift }, "w", function()
+	awful.key({ mod }, "b", function()
 		awful.spawn(apps.default.web_browser)
 	end, { description = "open web browser", group = "app" }),
 
@@ -73,36 +78,36 @@ awful.keyboard.append_global_keybindings({
 	--- Focus client by direction
 	awful.key({ mod }, "k", function()
 		awful.client.focus.bydirection("up")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus up", group = "client" }),
 	awful.key({ mod }, "j", function()
 		awful.client.focus.bydirection("down")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus down", group = "client" }),
 	awful.key({ mod }, "h", function()
 		awful.client.focus.bydirection("left")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus left", group = "client" }),
 	awful.key({ mod }, "l", function()
 		awful.client.focus.bydirection("right")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus right", group = "client" }),
 
 	awful.key({ mod }, "Up", function()
 		awful.client.focus.bydirection("up")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus up", group = "client" }),
 	awful.key({ mod }, "Down", function()
 		awful.client.focus.bydirection("down")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus down", group = "client" }),
 	awful.key({ mod }, "Left", function()
 		awful.client.focus.bydirection("left")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus left", group = "client" }),
 	awful.key({ mod }, "Right", function()
 		awful.client.focus.bydirection("right")
-		bling.module.flash_focus.flashfocus(client.focus)
+		-- bling.module.flash_focus.flashfocus(client.focus)
 	end, { description = "focus right", group = "client" }),
 
 	--- Resize focused client

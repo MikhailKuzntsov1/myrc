@@ -2,6 +2,9 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local beautiful = require("beautiful")
 
+-- @Mikhail: killer-feature of AwesomeWM !
+-- @docs: https://blingcorp.github.io/bling/#/module/swal
+local bling = require("modules.bling")
 --- ░▀█▀░█░█░█▀▀░█▄█░█▀▀
 --- ░░█░░█▀█░█▀▀░█░█░█▀▀
 --- ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀
@@ -43,3 +46,6 @@ gears.timer({
 	end,
 })
 
+
+bling.module.window_swallowing.start()  -- activates window swallowing
+bling.module.flash_focus.disable()
