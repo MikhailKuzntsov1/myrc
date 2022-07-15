@@ -335,3 +335,17 @@ ccleaner() {
     rm -rf ~/.Trash/   > /dev/null 2>&1 &
 }
 
+# ~/ CleanUp
+# TODO: watch Luke Smith's vid
+# https://www.youtube.com/watch?v=yy8RoDSdhIQ
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+
+# @W Programs that DO NOT support XDG_BASE_DIR
+export LESSHISTFILE="-"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
