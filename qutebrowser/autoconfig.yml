@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  statusbar.position:
-    global: top
+  content.notifications.enabled:
+    https://www.reddit.com: false

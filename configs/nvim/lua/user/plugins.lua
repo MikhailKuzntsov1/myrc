@@ -127,7 +127,7 @@ return packer.startup(function(use)
 	-- @Completition
 	-- use 'github/copilot.vim'
 	use({
-		"hrsh7th/nvim-cmp", -- The completion plugin
+        "hrsh7th/nvim-cmp", -- The completion plugin
 		"L3MON4D3/LuaSnip", -- snippet engine, required for completition
 
 		-- @SourcesOfCompletition
@@ -190,9 +190,7 @@ return packer.startup(function(use)
 	use({ "cdelledonne/vim-cmake", ft = { "c", "cpp", "cmake", "makefile" } })
 
 	-- @Web
-	use({
-		"norcalli/nvim-colorizer.lua",
-	})
+	use({ "norcalli/nvim-colorizer.lua", })
 
 	-- @Docker
 	-- use 'jamestthompson3/nvim-remote-containers'
