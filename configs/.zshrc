@@ -73,6 +73,12 @@ alias neovide='neovide --multigrid --nofork -- '
 alias vimz="/usr/bin/vi"
 alias tmux="tmux -2"
 
+# LS Aliases
+alias ll="exa -l -g --icons"
+alias la="ll -a"
+alias ls="exa --icons -F --sort=size"
+alias tree="ls -T"
+alias l="la"
 
 # CLI file manager alias
 alias rr="ranger"

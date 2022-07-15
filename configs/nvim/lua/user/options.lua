@@ -70,15 +70,8 @@ g.neovide_cursor_antialiasing = true
 g.neovide_cursor_unfocused_outline_width = 0.125
 g.neovide_cursor_animation_length = 0.0
 g.neovide_cursor_trail_length = 0
+g.scroll_animation_length = 0.1
 -- g.neovide_transparency = 0.80
-
-if g.neovide_silent == false then
-	g.neovide_cursor_animation_length = 0.13
-	g.neovide_cursor_trail_length = 0.8
-else
-	g.neovide_cursor_animation_length = 0.0
-	g.neovide_cursor_trail_length = 0
-end
 
 vim.opt.wildignore = { "*.o", "*.a", "__pycache__" }
 vim.opt.shortmess:append("c")
