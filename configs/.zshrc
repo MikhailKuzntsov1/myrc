@@ -60,6 +60,7 @@ export plugins=(
     git
     docker
     tmux
+    zsh-autosuggestions
     gpg-agent # enables GPG agent 
 )
 
@@ -83,6 +84,9 @@ alias ls="exa --icons -F --sort=size"
 alias tree="ls -T"
 alias t="tree -a -L 1"
 alias l="la"
+
+# Better mkdir
+alias mkdir="mkdir -p"
 
 # CLI file manager alias
 alias rr="ranger"
