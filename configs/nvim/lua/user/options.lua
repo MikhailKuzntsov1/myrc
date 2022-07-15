@@ -51,7 +51,7 @@ local options = {
 	signcolumn = "yes",
 }
 
-vim.opt.guifont = "FiraCode Nerd Font Mono:h16"
+vim.opt.guifont = "FiraCode Nerd Font Mono:h9"
 
 local g = vim.g
 
