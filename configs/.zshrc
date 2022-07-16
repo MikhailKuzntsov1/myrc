@@ -335,17 +335,27 @@ ccleaner() {
     rm -rf ~/.Trash/   > /dev/null 2>&1 &
 }
 
+# @TODO: Find better way to do this
+# if [ -z "$MY_EXT_IP" ]; then
+#     MY_EXT_IP=$(curl ifconfig.me.)
+# fi
+#
+# if [ -z "$MY_PRIV_IP" ]; then
+#     MY_PRIV_IP=$(ip addr show | grep -e 'inet ' | grep -v "127" | awk '{print $2}' | cut -f1 -d'/')
+# fi 
+
 # ~/ CleanUp
 # TODO: watch Luke Smith's vid
 # https://www.youtube.com/watch?v=yy8RoDSdhIQ
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
+# export XDG_CONFIG_HOME="$HOME/.config"
+# export XDG_CACHE_HOME="$HOME/.cache"
+# export XDG_DATA_HOME="$HOME/.local/share"
+# export XDG_STATE_HOME="$HOME/.local/state"
 
 
 # @W Programs that DO NOT support XDG_BASE_DIR
 export LESSHISTFILE="-"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+# export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+
