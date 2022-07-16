@@ -32,8 +32,6 @@ vim.cmd([[
       autocmd FileType qss set filetype=css
     augroup end
 
-    autocmd BufNewFile,BufRead */.git/COMMIT_EDITMSG setlocal filetype=notes
-
   " This autocmd is for CMake util. It changes CWD to be near currently editing tab.
     function! OnTabEnter(path)
       if isdirectory(a:path)
