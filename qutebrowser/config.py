@@ -3,12 +3,12 @@
 #   qute://help/curing.html
 #   qute://help/settings.html
 
-c.set("colors.webpage.darkmode.enabled", True)
-c.auto_save.session = true
+config.set("colors.webpage.darkmode.enabled", True)
+c.auto_save.session = True
 c.fonts.default_size = '14pt'
 c.fonts.default_family = 'FiraCode Nerd Font Mono'
 # (!) Doesn't work as expected
-config.statusbar.posititon = top
+config.set("statusbar.position", "top")
 """
 When to show the tab bar.
 Valid values: (always, never, multiple, switching)
@@ -22,69 +22,69 @@ c.downloads.location.directory = '~/Downloads'
 """
 Interaction with youtube
 """
-c.bind('M', 'hint links spawn mpv {hint-url}')
-c.bind('m', 'spawn mpv {url}')
-c.bind('Z', 'hint links spawn st -e yt-dlp {hint-url}')
-c.bind('t', 'set-cmd-text -s :open -t')
+config.bind('M', 'hint links spawn mpv {hint-url}')
+config.bind('m', 'spawn mpv {url}')
+config.bind('Z', 'hint links spawn st -e yt-dlp {hint-url}')
+config.bind('t', 'set-cmd-text -s :open -t')
 
 
 """
 Tabs
 """
-c.tabs.width('10%')
-c.tabs.padding({
-    top: '10px' # TODO: do this
-})
+config.set("tabs.width", "10%")
+# c.tabs.padding({
+#     top: '10px' # TODO: do this
+# })
 # TODO: make only selected tabs have bold font
 # c.fonts.tabs.selected()
 # c.fonts.tabs.unselected()
 
-c.unbind('J', 'normal')
-c.unbind('K', 'normal')
-c.bind('J', 'tab-prev')
-c.bind('K', 'tab-next')
+config.unbind('J', 'normal')
+config.unbind('K', 'normal')
+config.bind('J', 'tab-prev')
+config.bind('K', 'tab-next')
 
-c.bind('<Space>p', 'tab-pin')
-c.bind('<Space>h', 'home')
+config.bind('<Space>p', 'tab-pin')
+config.bind('<Space>h', 'home')
 
 """
 Uncomment this to still load settings cured via autoconfig.yml
 Or uncomment this line to load settings from c.py
 """
-c.load_autoconfig(False)
+config.load_autoconfig(False)
 
 """
 Aliases for commands. The keys of the given dictionary are the
 aliases, while the values are the commands they map to.
 """
-c.aliases = {
+config.aliases = {
     'q': 'quit', 
     'w': 'session-save', 
     'wq': 'quit --save'
 }
 """
 Allow websites to show notifications.
-Type: BoolAsk (true / false / ask)
+Type: BoolAsk (True / False / ask)
 """
-c.set('content.notifications.enabled', false, 'https://www.reddit.com')
-c.set('content.notifications.enabled', True, 'https://www.youtube.com')
+config.set('content.notifications.enabled', False, 'https://www.reddit.com')
+config.set('content.notifications.enabled', True, 'https://www.youtube.com')
 
 
 """
 Load images automatically in web pages.
 Type: Bool
 """
-c.set('content.images', True, 'chrome-devtools://*')
-c.set('content.images', True, 'devtools://*')
+config.set('content.images', True, 'chrome-devtools://*')
+config.set('content.images', True, 'devtools://*')
 
 """
 Enable JavaScript.
 Type: Bool
 """
-c.set('content.javascript.enabled', True, 'chrome-devtools://*')
-c.set('content.javascript.enabled', True, 'devtools://*')
-c.set('content.javascript.enabled', True, 'chrome://*/*')
-c.set('content.javascript.enabled', True, 'qute://*/*')
+config.set('content.javascript.enabled', True, 'chrome-devtools://*')
+config.set('content.javascript.enabled', True, 'devtools://*')
+config.set('content.javascript.enabled', True, 'chrome://*/*')
+config.set('content.javascript.enabled', True, 'qute://*/*')
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
 # including IndexedDB, DOM storage, filesystem API, service workers, and
@@ -98,7 +98,7 @@ c.set('content.javascript.enabled', True, 'qute://*/*')
 #   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
 #   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 #   - never: Don't accept cookies at all.
-c.set('content.cookies.accept', 'all', 'chrome-devtools://*')
+config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
@@ -113,7 +113,7 @@ c.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 #   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
 #   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 #   - never: Don't accept cookies at all.
-c.set('content.cookies.accept', 'all', 'devtools://*')
+config.set('content.cookies.accept', 'all', 'devtools://*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -129,7 +129,7 @@ c.set('content.cookies.accept', 'all', 'devtools://*')
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}', 'https://web.whatsapp.com/')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -145,7 +145,7 @@ c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://accounts.google.com/*')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://accounts.google.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -161,7 +161,7 @@ c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/2010
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99 Safari/537.36', 'https://*.slack.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -177,7 +177,7 @@ c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/537.36 
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://docs.google.com/*')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://docs.google.com/*')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
@@ -193,7 +193,7 @@ c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/2010
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-c.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://drive.google.com/*')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://drive.google.com/*')
 
 
 # Search engines which can be used via the address bar.  Maps a search
@@ -375,14 +375,14 @@ c.fonts.prompts = 'default_size sans-serif'
 c.fonts.statusbar = '11pt "FiraCode Nerd Font Mono"'
 
 # Bindings to use dmenu rather than qutebrowser's builtin search.
-#c.bind('o', 'spawn --userscript dmenu-open')
-#c.bind('O', 'spawn --userscript dmenu-open --tab')
+#config.bind('o', 'spawn --userscript dmenu-open')
+#config.bind('O', 'spawn --userscript dmenu-open --tab')
 
 
 # Bindings for cycling through CSS stylesheets from Solarized Everything CSS:
 # https://github.com/alphapapa/solarized-everything-css
-c.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-c.bind(',dr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-c.bind(',gr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-c.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-c.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+config.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind(',dr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind(',gr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
