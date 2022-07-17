@@ -10,14 +10,14 @@ local tree_cb = require("nvim-tree.config").nvim_tree_callback
 nvim_tree.setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = true,
+	open_on_setup = false,
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
 		"alpha",
 	},
 	open_on_tab = false,
-	hijack_cursor = false,
+	hijack_cursor = true,
 	update_cwd = true,
 	diagnostics = {
 		enable = true,
@@ -66,6 +66,7 @@ nvim_tree.setup({
 		},
 		number = false,
 		relativenumber = false,
+		adaptive_size = true, -- resizes window based on the longest line
 	},
 	trash = {
 		cmd = "trash",
@@ -95,8 +96,8 @@ nvim_tree.setup({
 	},
 	renderer = {
 		add_trailing = false,
-		group_empty = false,
-		highlight_git = true,
+		group_empty = true,
+		highlight_git = false,
 		full_name = false,
 		highlight_opened_files = "none",
 		root_folder_modifier = ":~",
