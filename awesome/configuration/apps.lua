@@ -15,7 +15,7 @@ return {
 		--- Default code editor
 		code_editor = "neovide",
 		--- Default web browser
-		web_browser = "qutebrowser",
+		web_browser = "google-chrome-stable",
 		--- Default file manager
 		file_manager = "ranger",
 		--- Default network manager

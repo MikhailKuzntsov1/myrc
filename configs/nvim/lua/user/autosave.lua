@@ -9,7 +9,8 @@ autosave.setup({
 		return "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S")
 	end,
 	-- execution_message = "",
-	events = { "InsertLeave" }, -- this is optimal for performance
+	-- events = { "InsertLeave" }, -- this is optimal for performance
+	events = { "VimLeave" },
 	conditions = {
 		exists = true,
 		filename_is_not = {

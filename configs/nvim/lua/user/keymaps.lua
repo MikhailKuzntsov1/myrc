@@ -3,8 +3,6 @@ local term_opts = { silent = true, nowait = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
--- keymap("c", "w!!", "%!sudo tee > /dev/null %", opts)
-
 --Remap space as leader key
 keymap("n", "<Space>", "<Nop>", { nowait = true })
 vim.g.mapleader = " "
@@ -15,10 +13,12 @@ keymap("n", "<ESC>", ":noh<CR>", opts)
 keymap("n", "<leader>q", ":q!<CR>", opts)
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
 keymap("n", "<leader>n", "<C-W>n", opts)
+keymap("n", "<F-7>", ":w | :%bd | e#<CR>", opts) -- close all buffers except current
 
 -- Easier scrolling
 keymap("n", "^", "<C-d>", opts)
 keymap("n", "&", "<C-u>", opts)
+
 -- Easier paragraphs
 keymap("n", "<F8>", "}", opts)
 keymap("n", "<F9>", "{", opts)
@@ -73,8 +73,8 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down (J, K)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
--- @Terminal --
 
+-- @Terminal --
 -- Open terminal from N mode
 keymap("n", "<leader>t", ":vsplit term://zsh<CR>", opts)
 
@@ -143,6 +143,7 @@ keymap(
 	opts
 )
 keymap("n", "<leader>r", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>8", ":Telescope symbols<CR>", opts)
 
 -- @NvimTree --
 keymap("n", "<leader>o", ":NvimTreeToggle<cr>", opts)
@@ -156,6 +157,26 @@ keymap("n", "<F2>", ":lua CMakeGenerate()<cr>", opts)
 keymap("n", "<F3>", ":lua CMakeBuild()<cr>", opts)
 keymap("n", "<F4>", ":lua Launch_executable()<cr>", opts)
 
+-- @LSP_Diagnostics
+keymap("n", "<leader>7", "<Plug>(toggle-lsp-diag)", opts)
+
+-- @Mouse
+-- [@Mikhail: making vim more accessible for the team is very important]
+-- For some reason by default MiddleMouse is paste
+keymap("", "<MiddleMouse>", "<C-I>", opts)
+
+-- My mouse have 2 special keys. They are universally mapped to BACK / FORWARD
+-- This binding works only in windows
+keymap("", "<X1Mouse>", "<C-O>", opts)
+keymap("", "<X2Mouse>", "<C-I>", opts)
+keymap("n", "<S-LeftMouse>", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+keymap("n", "<C-LeftMouse>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "<-C-S-LeftMouse>", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+
+-- 🤖 @Command --
+keymap("c", "++", "%!sudo tee > /dev/null %", opts)
+-- keymap("c", "<leader><leader>", "<C-R>+", opts)
+
 Launch_executable = function()
 	CMAKECMD = "open -a 'Iterm.app' ~/s21_smart_calc/build/Debug/Bin/SmartCalc.app/Contents/MacOS/SmartCalc"
 	local result = vim.fn.system(CMAKECMD)
@@ -164,19 +185,21 @@ end
 
 CMakeGenerate = function()
 	if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" or vim.bo.filetype == "cmake" then
-		vim.cmd("<Plug>(CMakeGenerate)")
+		vim.cmd("CMakeGenerate")
+	elseif vim.bo.filetype == "javascript" or vim.bo.filetype == "typescrtipt" then
+		vim.fn.system("!webpack build")
 	else
-		vim.cmd("webpack")
+		require("telescope").extensions.toggletasks.spawn()
 	end
 end
 
 CMakeBuild = function()
 	if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" or vim.bo.filetype == "cmake" then
-		vim.cmd("<Plug>(CMakeBuild)")
+		vim.cmd("CMakeBuild")
 	elseif vim.bo.filetype == "javascript" or vim.bo.filetype == "typescrtipt" then
-		vim.cmd("webpack")
+		vim.cmd("!webpack")
 	else
-		vim.cmd([[ lua require('telescope').extensions.toggletasks.spawn() ]])
+		require("telescope").extensions.toggletasks.spawn()
 	end
 end
 
@@ -186,9 +209,6 @@ Build_Current_File = function()
 	elseif vim.bo.filetype == "javascript" or vim.bo.filetype == "typescrtipt" then
 		vim.fn.system("webpack build")
 	else
-		vim.cmd([[ lua require('telescope').extensions.toggletasks.spawn() ]])
+		require("telescope").extensions.toggletasks.spawn()
 	end
 end
-
--- @LSP_Diagnostics
-keymap("n", "<leader>7", "<Plug>(toggle-lsp-diag)", opts)
