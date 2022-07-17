@@ -13,7 +13,7 @@ keymap("n", "<ESC>", ":noh<CR>", opts)
 keymap("n", "<leader>q", ":q!<CR>", opts)
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
 keymap("n", "<leader>n", "<C-W>n", opts)
-keymap("n", "<F-7>", ":w | :%bd | e#<CR>", opts) -- close all buffers except current
+keymap("n", "<F7>", ":w | :%bd | e#<CR>", opts) -- close all buffers except current
 
 -- Easier scrolling
 keymap("n", "^", "<C-d>", opts)
