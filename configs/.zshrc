@@ -8,7 +8,6 @@
 export TERM=xterm-256color
 # export ZSH_THEME="af-magic"
 export ZSH_THEME=""
-eval "$(starship init zsh)"
 # export ZSH_THEME="spaceship"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -39,8 +38,8 @@ fi;
 if [[ "$OSTYPE" == "darwin"* ]]; then
     BREW=/Volumes/MISHA/mybrew
     BREW_BIN=$BREW/bin
-    source "$HOME"/.brew_packages.zsh
-    source "$HOME"/.brewconfig.zsh
+    # source "$HOME"/.brew_packages.zsh
+    # source "$HOME"/.brewconfig.zsh
     # Turns 'press & hold OS X' false for VSCode
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
     # Prints available space
@@ -51,7 +50,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # Os X specific aliases
     alias flash="cd /Volumes/MISHA"
-    alias gvim="/Volumes/MISHA/Neovide --multigrid --nofork -- "
+    alias gvim="open /Volumes/MISHA/MacOS/Neovide"
+    alias neovide="open /Volumes/MISHA/MacOS/Neovide"
     PATH=$PATH:'/Users/posidoni/Library/Python/3.8/bin'
 fi;
 
@@ -349,3 +349,4 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export LESSHISTFILE="-"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+eval "$(starship init zsh)"

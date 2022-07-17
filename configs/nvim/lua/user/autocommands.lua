@@ -61,89 +61,89 @@ vim.cmd([[
     vim.g.sync_all_branches = true
 --]]
 -- asdf
-vim.g.vim_git_sync_branch = "main"
-vim.g.vim_sync_commit_msg = " [Sync] " .. os.date()
-
-vim.g.pull_events = {
-	-- "BufReadPre", -- before starting to edit a new buffer, before reading file into memory
-	"VimEnter",
-}
-
-vim.g.commit_events = {
-	"VimLeave",
-}
-
-vim.g.push_events = {
-	"VimLeave",
-}
-
-local syncBuffers = {
-	"lua",
-	"md",
-	"markdown",
-	"vimwiki",
-	"txt",
-	"*.vimwiki",
-	"*.md",
-	"*.txt",
-	"*.html",
-	"*.lua",
-}
-
-vim.g.vim_git_sync_dirs = {
-	"$HOME/Obsidian/",
-	"/home/posidoni/myrc/",
-	"$HOME/Codespace/",
-}
-
--- Lua functions
-PullAll = function()
-	for _, dir in ipairs(vim.g.vim_git_sync_dirs) do
-		vim.fn.system("git -C " .. dir .. " pull origin " .. vim.g.vim_git_sync_branch .. " ")
-	end
-	vim.fn.system('notify-send "Pulled from all repositories ..."')
-end
-
-CommitAll = function()
-	for _, dir in ipairs(vim.g.vim_git_sync_dirs) do
-		vim.fn.system("git -C " .. dir .. " commit -am '" .. vim.g.vim_sync_commit_msg .. "' ")
-	end
-	vim.fn.system('notify-send "Comitted changes to repositories ..."')
-end
-
-PushAll = function()
-	CommitAll()
-	for _, dir in ipairs(vim.g.vim_git_sync_dirs) do
-		vim.fn.system("git -C " .. dir .. " push origin " .. vim.g.vim_git_sync_branch .. " ")
-	end
-
-	vim.fn.system('notify-send "Pushed changes to repositories"')
-end
-
-local GitSyncGroupID = vim.api.nvim_create_augroup("VimGitSync", {
-	clear = true,
-})
-
-vim.api.nvim_create_autocmd(vim.g.pull_events, {
-	group = GitSyncGroupID,
-	desc = "Pulls git repositories for specified dirs on \
-    start of the development sessions (launching Vim)",
-	pattern = syncBuffers,
-	callback = PullAll,
-})
-
-vim.api.nvim_create_autocmd(vim.g.commit_events, {
-	group = GitSyncGroupID,
-	desc = "Commits changes in all git repositories for specified dirs \
-    at the end of the development session (exiting Vim)",
-	pattern = syncBuffers,
-	callback = CommitAll,
-})
-
-vim.api.nvim_create_autocmd(vim.g.push_events, {
-	group = GitSyncGroupID,
-	desc = "Pushes changed in all git repositories for specified dirs \
-    at the end of the development sessios (exiting Vim)",
-	pattern = syncBuffers,
-	callback = PushAll,
-})
+-- vim.g.vim_git_sync_branch = "main"
+-- vim.g.vim_sync_commit_msg = " [Sync] " .. os.date()
+--
+-- vim.g.pull_events = {
+-- 	-- "BufReadPre", -- before starting to edit a new buffer, before reading file into memory
+-- 	"VimEnter",
+-- }
+--
+-- vim.g.commit_events = {
+-- 	"VimLeave",
+-- }
+--
+-- vim.g.push_events = {
+-- 	"VimLeave",
+-- }
+--
+-- local syncBuffers = {
+-- 	"lua",
+-- 	"md",
+-- 	"markdown",
+-- 	"vimwiki",
+-- 	"txt",
+-- 	"*.vimwiki",
+-- 	"*.md",
+-- 	"*.txt",
+-- 	"*.html",
+-- 	"*.lua",
+-- }
+--
+-- vim.g.vim_git_sync_dirs = {
+-- 	"$HOME/Obsidian/",
+-- 	"/home/posidoni/myrc/",
+-- 	"$HOME/Codespace/",
+-- }
+--
+-- -- Lua functions
+-- PullAll = function()
+-- 	for _, dir in ipairs(vim.g.vim_git_sync_dirs) do
+-- 		vim.fn.system("git -C " .. dir .. " pull origin " .. vim.g.vim_git_sync_branch .. " ")
+-- 	end
+-- 	vim.fn.system('notify-send "Pulled from all repositories ..."')
+-- end
+--
+-- CommitAll = function()
+-- 	for _, dir in ipairs(vim.g.vim_git_sync_dirs) do
+-- 		vim.fn.system("git -C " .. dir .. " commit -am '" .. vim.g.vim_sync_commit_msg .. "' ")
+-- 	end
+-- 	vim.fn.system('notify-send "Comitted changes to repositories ..."')
+-- end
+--
+-- PushAll = function()
+-- 	CommitAll()
+-- 	for _, dir in ipairs(vim.g.vim_git_sync_dirs) do
+-- 		vim.fn.system("git -C " .. dir .. " push origin " .. vim.g.vim_git_sync_branch .. " ")
+-- 	end
+--
+-- 	vim.fn.system('notify-send "Pushed changes to repositories"')
+-- end
+--
+-- local GitSyncGroupID = vim.api.nvim_create_augroup("VimGitSync", {
+-- 	clear = true,
+-- })
+--
+-- vim.api.nvim_create_autocmd(vim.g.pull_events, {
+-- 	group = GitSyncGroupID,
+-- 	desc = "Pulls git repositories for specified dirs on \
+--     start of the development sessions (launching Vim)",
+-- 	pattern = syncBuffers,
+-- 	callback = PullAll,
+-- })
+--
+-- vim.api.nvim_create_autocmd(vim.g.commit_events, {
+-- 	group = GitSyncGroupID,
+-- 	desc = "Commits changes in all git repositories for specified dirs \
+--     at the end of the development session (exiting Vim)",
+-- 	pattern = syncBuffers,
+-- 	callback = CommitAll,
+-- })
+--
+-- vim.api.nvim_create_autocmd(vim.g.push_events, {
+-- 	group = GitSyncGroupID,
+-- 	desc = "Pushes changed in all git repositories for specified dirs \
+--     at the end of the development sessios (exiting Vim)",
+-- 	pattern = syncBuffers,
+-- 	callback = PushAll,
+-- })
