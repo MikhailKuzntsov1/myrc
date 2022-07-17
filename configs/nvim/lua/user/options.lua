@@ -68,10 +68,10 @@ g.neovide_input_use_logo = true -- Redirects [S]uper key to Nvim (Win / Opt)
 g.neovide_silent = false
 g.neovide_cursor_antialiasing = true
 g.neovide_cursor_unfocused_outline_width = 0.125
-g.neovide_cursor_animation_length = 0.0
-g.neovide_cursor_trail_length = 0
-g.scroll_animation_length = 0.1
--- g.neovide_transparency = 0.80
+g.neovide_cursor_animation_length = 0.3
+g.neovide_cursor_trail_length = 0.3
+g.scroll_animation_length = 0.9
+g.neovide_transparency = 0.80
 
 vim.opt.wildignore = { "*.o", "*.a", "__pycache__" }
 vim.opt.shortmess:append("c")
