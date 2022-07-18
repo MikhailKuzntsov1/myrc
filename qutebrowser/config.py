@@ -3,12 +3,26 @@
 #   qute://help/curing.html
 #   qute://help/settings.html
 
+"""
+Core settings
+"""
+config.set("colors.webpage.preferred_color_scheme", 'dark')
 config.set("colors.webpage.darkmode.enabled", True)
 c.auto_save.session = True
-c.fonts.default_size = '14pt'
+config.set("content.autoplay", False)
 c.fonts.default_family = 'FiraCode Nerd Font Mono'
-# (!) Doesn't work as expected
 config.set("statusbar.position", "top")
+
+"""
+Fonts
+"""
+c.fonts.default_size = '14pt'
+c.fonts.statusbar = '18pt "FiraCode Nerd Font Mono"'
+c.fonts.completion.entry = '16pt "FiraCode Nerd Font Mono"'
+c.fonts.default_family = '"FiraCode Nerd Font Mono"'
+c.fonts.debug_console = '11pt "FiraCode Nerd Font Mono"'
+c.fonts.prompts = 'default_size sans-serif'
+
 """
 When to show the tab bar.
 Valid values: (always, never, multiple, switching)
@@ -27,6 +41,11 @@ config.bind('m', 'spawn mpv {url}')
 config.bind('Z', 'hint links spawn st -e yt-dlp {hint-url}')
 config.bind('t', 'set-cmd-text -s :open -t')
 
+
+"""
+InsertMode
+"""
+config.set("spellcheck.languages", ['en-US', 'ru-RU'])
 
 """
 Tabs
@@ -214,12 +233,13 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'am': 'https://www.amazon.com/s?k={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'goog': 'https://www.google.com/search?q={}', 'hoog': 'https://hoogle.haskell.org/?hoogle={}', 're': 'https://www.reddit.com/r/{}', 'ub': 'https://www.urbandictionary.com/define.php?term={}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
+c.url.searchengines = {'DEFAULT': 'https://google.com/?q={}', 'am': 'https://www.amazon.com/s?k={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'goog': 'https://www.google.com/search?q={}', 'hoog': 'https://hoogle.haskell.org/?hoogle={}', 're': 'https://www.reddit.com/r/{}', 'ub': 'https://www.urbandictionary.com/define.php?term={}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
 # Type: List of QtColor, or QtColor
 c.colors.completion.fg = ['#9cc4ff', 'white', 'white']
+c.colors.statusbar.url.success.https.fg = '#9cc4ff'
 
 # Background color of the completion widget for odd rows.
 # Type: QssColor
@@ -344,41 +364,6 @@ c.colors.tabs.pinned.selected.odd.bg = '#282c34'
 # Background color of pinned selected even tabs.
 # Type: QtColor
 c.colors.tabs.pinned.selected.even.bg = '#282c34'
-
-# Default font families to use. Whenever "default_family" is used in a
-# font setting, it's replaced with the fonts listed here. If set to an
-# empty value, a system-specific monospace default is used.
-# Type: List of Font, or Font
-c.fonts.default_family = '"FiraCode Nerd Font Mono"'
-
-# Default font size to use. Whenever "default_size" is used in a font
-# setting, it's replaced with the size listed here. Valid values are
-# either a float value with a "pt" suffix, or an integer value with a
-# "px" suffix.
-# Type: String
-c.fonts.default_size = '11pt'
-
-# Font used in the completion widget.
-# Type: Font
-c.fonts.completion.entry = '11pt "FiraCode Nerd Font Mono"'
-
-# Font used for the debugging console.
-# Type: Font
-c.fonts.debug_console = '11pt "FiraCode Nerd Font Mono"'
-
-# Font used for prompts.
-# Type: Font
-c.fonts.prompts = 'default_size sans-serif'
-
-# Font used in the statusbar.
-# Type: Font
-c.fonts.statusbar = '11pt "FiraCode Nerd Font Mono"'
-
-# Bindings to use dmenu rather than qutebrowser's builtin search.
-#config.bind('o', 'spawn --userscript dmenu-open')
-#config.bind('O', 'spawn --userscript dmenu-open --tab')
-
-
 # Bindings for cycling through CSS stylesheets from Solarized Everything CSS:
 # https://github.com/alphapapa/solarized-everything-css
 config.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
