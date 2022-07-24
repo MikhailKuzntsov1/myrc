@@ -43,7 +43,6 @@ $crystal\
 $cmd_duration\
 $c\
 $lua\
-$fill\
 $git_branch\
 $git_commit\
 $git_state\
@@ -145,7 +144,7 @@ symbol = " "
 [git_branch]
 # always_show_remote = true # sometimes might be helpful, when remote branch name doesnt match local name
 symbol = " "
-format = '[$symbol$branch:(:$remote_branch)]($style) '
+format = '[$symbol$branch (:$remote_branch)]($style) '
 
 [git_state]
 format = '[\[$state( $progress_current of $progress_total)\]]($style) '

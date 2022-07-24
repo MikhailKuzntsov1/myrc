@@ -13,7 +13,13 @@ keymap("n", "<ESC>", ":noh<CR>", opts)
 keymap("n", "<leader>q", ":q!<CR>", opts)
 keymap("n", "<leader>a", ":Alpha<CR>", opts)
 keymap("n", "<leader>n", "<C-W>n", opts)
-keymap("n", "<F7>", ":w | :%bd | e#<CR>", opts) -- close all buffers except current
+keymap("n", "<F7>", ":%bd |e# | bd#<cr> |'\"", opts) -- close all buffers except current & restore cursor position in current buffer
+keymap("n", "Y", "yg$", opts)
+keymap("n", "0", "^", opts)
+
+-- Better wrap navigation
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
 
 -- Easier scrolling
 keymap("n", "^", "<C-d>", opts)
@@ -68,6 +74,8 @@ vim.cmd([[
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+-- Don't copy on paste
+keymap("v", "p", '"_dP', opts)
 
 -- @VisualBlock --
 -- Move text up and down (J, K)

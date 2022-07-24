@@ -6,6 +6,7 @@ local options = {
 	conceallevel = 0, -- so that `` is visible in markdown files
 	fileencoding = "utf-16", -- the encoding written to a file
 	hlsearch = true, -- highlight all matches on previous search pattern
+	incsearch = true,
 	ignorecase = true, -- ignore case in search patterns
 	mouse = "a", -- allow the mouse to be used in neovim
 	pumheight = 10, -- pop up menu height
@@ -59,6 +60,10 @@ local g = vim.g
 vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
 vim.cmd([[set sessionoptions-=buffers]])
 
+-- Autoread buffer on an external change
+vim.cmd([[ set autoread ]])
+vim.cmd([[ au FocusGained,BufEnter * checktime ]])
+
 -- See @docs for reference on @Neovide configuration:
 -- https://github.com/neovide/neovide/wiki/Configuration#multigrid
 g.neovide_refresh_rate = 140
@@ -66,13 +71,13 @@ g.neovide_fullscreen = false -- If this is true, it is impossible to exit fullsc
 
 --- Input settings
 g.neovide_input_use_logo = true -- Redirects [S]uper key to Nvim (Win / Opt)
-g.neovide_silent = false
+g.neovide_silent = true
 g.neovide_cursor_antialiasing = true
 g.neovide_cursor_unfocused_outline_width = 0.125
-g.neovide_cursor_animation_length = 0.3
-g.neovide_cursor_trail_length = 0.3
-g.scroll_animation_length = 0.9
-g.neovide_transparency = 0.80
+g.neovide_cursor_animation_length = 0
+g.neovide_cursor_trail_length = 0
+g.scroll_animation_length = 0
+-- g.neovide_transparency = 0.80
 
 vim.opt.wildignore = { "*.o", "*.a", "__pycache__" }
 vim.opt.shortmess:append("c")

@@ -52,7 +52,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias flash="cd /Volumes/MISHA"
     alias gvim="open /Volumes/MISHA/MacOS/Neovide"
     alias neovide="open /Volumes/MISHA/MacOS/Neovide"
-    PATH=$PATH:'/Users/posidoni/Library/Python/3.8/bin'
 fi;
 
 # ZSH config
@@ -215,29 +214,9 @@ install_brew() {
     echo "Configuring ctags ..."
     alias ctags="/Volumes/MISHA/mybrew/bin/ctags"
 
-    echo "Installing essential casks ..."
-    brew install task
-    brew install --cask telegram
-    brew install --cask fvim
-    brew install --cask obs
-    brew install --cask notion
-    brew install --cask notion-enhanced
-    brew install --cask neovide
-    # brew install --cask qt-design-studio
-
     echo "Installing valgrind for OS X..."
     brew tap LouisBrunner/valgrind
     brew install --HEAD LouisBrunner/valgrind/valgrind
-}
-
-install_brew_casks() {
-    echo "Installing brew casks ..."
-    brew install --cask telegram
-    brew install --cask fvim
-    brew install --cask obs
-    brew install --cask notion
-    brew install --cask notion-enhanced
-    brew install --cask neovide
 }
 
 SAVEIFS=$IFS
@@ -353,7 +332,6 @@ ccleaner() {
 # export XDG_CACHE_HOME="$HOME/.cache"
 # export XDG_DATA_HOME="$HOME/.local/share"
 # export XDG_STATE_HOME="$HOME/.local/state"
-
 
 # @W Programs that DO NOT support XDG_BASE_DIR
 export LESSHISTFILE="-"
