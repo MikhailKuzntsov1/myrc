@@ -1,9 +1,8 @@
 local options = {
 	backup = false, -- creates a backup file
-	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+	clipboard = "unnamedplus",
 	cmdheight = 2, -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-	conceallevel = 0, -- so that `` is visible in markdown files
 	fileencoding = "utf-16", -- the encoding written to a file
 	hlsearch = true, -- highlight all matches on previous search pattern
 	incsearch = true,
@@ -12,6 +11,8 @@ local options = {
 	pumheight = 10, -- pop up menu height
 	wildoptions = "pum",
 	lazyredraw = false,
+	conceallevel = 2,
+	concealcursor = "n",
 	-- these AW commands
 	autowrite = true,
 	autowriteall = true,
@@ -57,8 +58,12 @@ vim.opt.guifont = "FiraCode Nerd Font Mono:h9"
 
 local g = vim.g
 
-vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
-vim.cmd([[set sessionoptions-=buffers]])
+vim.cmd([[
+set autoread
+aut FocusGained,BufEnter * checktime
+set foldexpr=nvim_treesitter#foldexpr()
+set sessionoptions-=buffers
+]])
 
 -- Autoread buffer on an external change
 vim.cmd([[ set autoread ]])

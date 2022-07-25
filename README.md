@@ -1,4 +1,4 @@
-# My .rc files
+# My config files
 
 ## Terminal
 
@@ -15,21 +15,6 @@
 ![Lua workflow](./assets/nvim_lua_2.png)
 ![Lua plugins](./assets/nvim_lua_plugins.png)
 
-## Usage
-
-```bash
-$ git clone https://github.com/MikhailKuzntsov1/myrc.git
-$ cd myrc
-$ ./install.sh
-```
-
-## Todo:
-
-- [X] Disable <S-Caps> and <C-Caps> in `.Xmodmap` (`solved with setxkbmap``)
-- [ ] Add better font size configuration
-- [ ] Add more wallpaper (in particular - pixelart)
-
-
 ## Credits
 
 - Some things in `.vimrc` & `.tmux.conf` were stolen from my fellow S21 students
@@ -39,3 +24,5 @@ $ ./install.sh
 - [Christian Chiarulli @ChristianChiarulli](https://github.com/ChristianChiarulli) created awesome
   tutorial on lua configuration of NeoVim. It is available on [Youtube](https://www.youtube.com/watch?v=ctH-a-1eUME&t=9s&ab_channel=chris%40machine). Many things in my NeoVim
   are based on his tutorial. Although, some things in this tutorial may be outdated.
+- [TJ DeVries](https://github.com/tjdevries), one of the NVim enthusiasts, delievered a great [talk](https://www.youtube.com/watch?v=IK_-C0GXfjo) on the concept of PDE, which I absolutely recomment checking out.
+- Special thanks to all FOSS developers, nothing would be possible without you.

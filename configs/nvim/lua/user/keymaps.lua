@@ -165,6 +165,10 @@ keymap("n", "<F2>", ":lua CMakeGenerate()<cr>", opts)
 keymap("n", "<F3>", ":lua CMakeBuild()<cr>", opts)
 keymap("n", "<F4>", ":lua Launch_executable()<cr>", opts)
 
+-- @Calendar
+keymap("n", "<leader>]", ":Calendar -view=day -split=vertical -width=30<cr>", opts)
+keymap("n", "<leader>[", ":Calendar -first_day=monday -view=week<cr>", opts)
+
 -- @LSP_Diagnostics
 keymap("n", "<leader>7", "<Plug>(toggle-lsp-diag)", opts)
 

@@ -1,13 +1,3 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-    return
-end
-
-local lsp_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lsp_status_ok then
-    return
-end
-
 -- @Warning. This is used servers. Any other servers are unused (even if installed)
 local servers = {
     "sumneko_lua",
@@ -25,10 +15,21 @@ local servers = {
     "cssls",
     "marksman",
 }
-
-lsp_installer.setup({
+require("mason").setup {
+    ui = {
+        icons = {
+            package_installed = "✓"
+        }
+    }
+}
+require("mason-lspconfig").setup {
     ensure_installed = servers,
-})
+}
+local lsp_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lsp_status_ok then
+    return
+end
+
 
 for _, server in pairs(servers) do
     local opts = {

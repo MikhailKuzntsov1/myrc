@@ -15,7 +15,7 @@ dashboard.section.header.val = {
 dashboard.section.buttons.val = {
 	dashboard.button("p", "  My project", ":Telescope projects <CR>"),
 	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-	dashboard.button("w", "  Open Wiki", ":VimwikiIndex <CR>"),
+	-- dashboard.button("w", "  Open Wiki", ":VimwikiIndex <CR>"),
 	dashboard.button("f", "  Find file", ":Telescope find_files  <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
@@ -24,12 +24,11 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-	-- NOTE: requires the fortune-mod package to work
-	-- local handle = io.popen("fortune")
-	-- local fortune = handle:read("*a")
-	-- handle:close()
-	-- return fortune
-	return "@posidoni"
+	local version = vim.version()
+	local print_version = "\t📗 v" .. version.major .. "." .. version.minor .. "." .. version.patch .. "\n"
+	local datetime = os.date("\t⌚ %H:%M:%S") .. "\n" .. os.date("\t📅 %d-%m-%Y") .. "\n"
+
+	return "\n\n" .. print_version .. datetime .. "\t💻 @posidoni"
 end
 
 dashboard.section.footer.val = footer()
@@ -39,5 +38,4 @@ dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = true
--- vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)

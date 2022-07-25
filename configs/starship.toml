@@ -55,7 +55,7 @@ $battery\
 $extip\
 $character"""
 
-right_format = """$custom"""
+# right_format = """$custom"""
 add_newline = true
 
 [fill]

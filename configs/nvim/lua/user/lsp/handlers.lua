@@ -42,7 +42,7 @@ M.setup = function()
         -- Disable a feature
         update_in_insert = false,
         float = {
-            focusable = false,
+            focusable = true,
             style = "minimal",
             border = "rounded",
             source = "always",
@@ -60,7 +60,7 @@ local function lsp_keymaps(bufnr)
     keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    -- keymap(bufnr, "n", "df", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    -- keymap(bufnr, "n", "<leader>77", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     -- keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
     -- keymap(bufnr, "n", "<leader>ll", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap(bufnr, "n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
@@ -73,22 +73,24 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 M.on_attach = function(client, bufnr)
-	if client.supports_method("textDocument/formatting") then
-		client.resolved_capabilities.document_formatting = false
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-				if #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) == 0 then
-					vim.lsp.buf.formatting_seq_sync(nil, 1000, nil)
-				end
-			end,
-		})
-	end
-	lsp_keymaps(bufnr)
-	-- lsp_highlight_document(client)
+    if client.supports_method("textDocument/formatting") then
+        -- client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.document_formatting = false
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                if #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) == 0 then
+                    -- vim.lsp.buf.formatting_seq_sync(nil, 1000, nil)
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end
+            end,
+        })
+    end
+    lsp_keymaps(bufnr)
+    -- lsp_highlight_document(client)
 end
 
 return M

@@ -35,7 +35,7 @@
 [color]
 	ui = auto
 [diff]
-	tool = nvim -d 
+	tool = nvim -d
 [gitflow "prefix"]
 	versiontag = v
 [sequence]
@@ -46,3 +46,7 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[safe]
+    directory = /home/posidoni/myrc
+	directory = /home/posidoni/myrc
+

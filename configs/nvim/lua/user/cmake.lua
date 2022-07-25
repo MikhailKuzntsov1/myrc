@@ -24,7 +24,7 @@ g.cmake_default_config = "Debug"
 -- .git determines the root of the project
 -- this is searched relative to the cwd
 g.cmake_root_markers = {
-	".git",
+    ".git",
 }
 
 -- All build configs will be created inside build dir of the project

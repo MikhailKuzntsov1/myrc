@@ -2,8 +2,8 @@
 # File: ZSH Config
 # Author: Mikhail Kuznetsov https://github.com/MikhailKuzntsov1
 # upd: 05 July 2022
-
-
+# 123
+export ZSH_DISABLE_COMPFIX=true
 ## ENV Configuration
 export TERM=xterm-256color
 # export ZSH_THEME="af-magic"
@@ -59,13 +59,14 @@ export plugins=(
     git
     docker
     tmux
-    zsh-autosuggestions
     gpg-agent # enables GPG agent 
 )
 
 # @Warning: plugins must be exported before oh-my-zsh is sources source $ZSH/oh-my-zsh.sh
 source "$HOME"/.oh-my-zsh/oh-my-zsh.sh # it is okay to get warning here, as bashls can't correctly parse ZSH scripts
 export ZSH="$HOME/.oh-my-zsh"
+
+
 
 # Aliases
 alias tks="tmux kill-session -t"
@@ -157,6 +158,9 @@ alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 alias caps="setxkbmap -option caps:swapescape"
+
+# WSL
+alias ~~='cd /mnt/c/Users/kuzne/Desktop'
 
 # Opens new Terminal window
 function new() {
